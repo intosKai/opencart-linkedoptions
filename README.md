@@ -14,6 +14,15 @@ _Версия: 0.0.3-alpha_
 ### Совместимые версии OpenCart
 * Opencart 2.3.0.2
 * ocStore 2.3.0.2.3
+
+#### В планах
+* AJAX загрузка
+* Перенести управление опциями в товар
+* Сделать поддержку переводов
+* Поддержка OpenCart 3+
+* Отдельные наборы значений
+#### Поддержка
+Лучшая поддержка это ваши доработки и идеи, в ином случае есть яндекс.кошелек 410013705953706.
 ## EN
 A module for creating an unlimited number of options for any OpenCart product.
 When you switch an option, there is switch product. This allows you to maximize the SEO of your site.
