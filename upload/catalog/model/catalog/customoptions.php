@@ -18,8 +18,8 @@ class ModelCatalogCustomOptions extends Model {
                 else {
                     $last = array_push($data, array(
                         'name' => $row['name'],
-                        'sort' => (int)$row['option_sort'],
-                        'type' => (int)$row['type'],
+                        'sort' => (int) $row['option_sort'],
+                        'type' => (int) $row['type'],
                     ));
                 }
 

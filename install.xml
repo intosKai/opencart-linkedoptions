@@ -3,7 +3,7 @@
 	<name>Linked Options</name>
 	<code>Linked Options</code>
 	<version>0.0.3</version>
-	<repo>https://github.com/intosKai/opencart-linkedoptions</repo>
+	<link>https://github.com/intosKai/opencart-linkedoptions</link>
 	<author>Petr Ivanov (info@ioqu.pro)</author>
 		
 		<file path="catalog/controller/product/product.php">
