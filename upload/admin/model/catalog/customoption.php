@@ -1,7 +1,7 @@
 <?php
 
 class ModelCatalogCustomOption extends Model {
-	public function editCustomOption($data) {
+	public function editCustomOption($data = array()) {
 		if (isset($data['option_id'])) {
 			$this->db->query("DELETE FROM " . DB_PREFIX . "custom_option WHERE id=" . (int)$data['option_id']);
 		}
@@ -10,7 +10,7 @@ class ModelCatalogCustomOption extends Model {
 	}
 
 	public function addValue($data = array()) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option_value SET product_id=" . (int)$data['value_product_id'] . ", option_id=" . (int)$data['value_option_id'] . ", sort=" . (int)$data['value_sort'] . ", value='" . $data['value_name'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option_value SET product_id=" . (int)$data['value_product_id'] . ", option_id=" . (int)$data['value_option_id'] . ", sort=" . (int)$data['value_sort'] . ", value='" . $this->db->escape($data['value_name']) . "'");
 	}
 
 	public function deleteCustomOption($option_id) {
@@ -63,7 +63,7 @@ class ModelCatalogCustomOption extends Model {
 	}
 
 	public function getCustomOption($option_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "custom_option WHERE id=" . $option_id);
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "custom_option WHERE id=" . (int)$option_id);
 
 		$data = array();
 		if ($query->num_rows > 0) {
@@ -74,7 +74,7 @@ class ModelCatalogCustomOption extends Model {
 	}
 
 	public function copyOption($option_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "custom_option WHERE id=" . $option_id);
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "custom_option WHERE id=" . (int)$option_id);
 
 		if (isset($query->rows)) {
 			$option = $query->rows[0];
@@ -83,7 +83,7 @@ class ModelCatalogCustomOption extends Model {
 
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "custom_option_value WHERE option_id=" . (int)$option_id);
 			foreach ($query->rows as $row) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option_value (product_id, option_id, sort, value) VALUES (" . $row['product_id'] . ", " . $new_id . ", " . $row['sort'] . ", '" . $row['value'] . "')");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option_value (product_id, option_id, sort, value) VALUES (" . (int)$row['product_id'] . ", " . $new_id . ", " . (int)$row['sort'] . ", '" . $this->db->escape($row['value']) . "')");
 			}
 
 			return $new_id;

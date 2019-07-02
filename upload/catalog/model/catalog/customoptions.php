@@ -6,7 +6,7 @@ class ModelCatalogCustomOptions extends Model {
 	    $table_option_value_name = DB_PREFIX . 'custom_option_value';
 
 	    // получаем значения опция, имя опций, id продуктов, сортировки
-	    $query = $this->db->query("SELECT type, value, " . $table_option_value_name . ".product_id, " . $table_option_name . ".name, " . $table_option_name . ".sort as option_sort, " . $table_option_value_name . ".sort as value_sort FROM " . $table_option_value_name . " LEFT JOIN " . $table_option_name . " ON option_id = " . $table_option_name . ".id WHERE " . $table_option_name . ".product_id = " . $product_id . " ORDER BY option_sort, value_sort");
+	    $query = $this->db->query("SELECT type, value, " . $table_option_value_name . ".product_id, " . $table_option_name . ".name, " . $table_option_name . ".sort as option_sort, " . $table_option_value_name . ".sort as value_sort FROM " . $table_option_value_name . " LEFT JOIN " . $table_option_name . " ON option_id = " . $table_option_name . ".id WHERE " . $table_option_name . ".product_id = " . (int)$product_id . " ORDER BY option_sort, value_sort");
 
 
         $data = array();
