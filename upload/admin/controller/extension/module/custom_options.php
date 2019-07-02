@@ -4,7 +4,7 @@ class ControllerExtensionModuleCustomOptions extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('catalog/option_redactor');
+		$this->load->language('extension/module/custom_options');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
