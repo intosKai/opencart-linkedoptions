@@ -8,14 +8,17 @@ _Версия: 0.0.5-alpha_
 
 * Копирование опций со значениями
 * Создание опций для любого товара
-* Два типа возможных опций (цвет и текст)
+* Три типа возможных опций (цвет, текст, изображение)
 * Сортировка опций и значений
 
 ### Совместимые версии OpenCart
 * Opencart 2.3.0.2
 * ocStore 2.3.0.2.3
 
-### При установке новой версии рекомендуется вручную удалить таблицы custom_option и custom_option_value из БД
+### Обратная совместимось модуля
+
+При апгрейде модуля необходимо сравнивать версии. Апгрейд без ошибок гарантирован, только в случае изменении последнего числа версии 0.0.*.
+
 ## EN
 A module for creating an unlimited number of options for any OpenCart product.
 When you switch an option, there is switch product. This allows you to maximize the SEO of your site.
