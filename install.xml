@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modification>
-	<name>Linked Options</name>
-	<code>Linked Options</code>
-	<version>0.0.3</version>
-	<link>https://github.com/intosKai/opencart-linkedoptions</link>
-	<author>Petr Ivanov (info@ioqu.pro)</author>
-		
-		<file path="catalog/controller/product/product.php">
-			<operation error="skip">
-				<search><![CDATA[$this->load->model('tool/image');]]></search>
-				<add position="before"><![CDATA[
+    <name>Linked Options</name>
+    <code>Linked Options</code>
+    <version>0.0.3</version>
+    <link>https://github.com/intosKai/opencart-linkedoptions</link>
+    <author>Petr Ivanov (info@ioqu.pro)</author>
+
+    <file path="catalog/controller/product/product.php">
+        <operation error="skip">
+            <search><![CDATA[$this->load->model('tool/image');]]></search>
+            <add position="before"><![CDATA[
 					$this->document->addStyle('catalog/view/theme/default/stylesheet/custom_option.css');
 					$this->load->model('catalog/customoptions');
 					$custom_options = $this->model_catalog_customoptions->getCustomOption($this->request->get['product_id']);
@@ -21,13 +21,13 @@
             		}
             		$data['custom_options'] = $custom_options;
 				]]></add>
-			</operation>				
-		</file>	
-		
-		<file path="catalog/view/theme/*/template/product/product.tpl">
-			<operation error="skip">
-				<search><![CDATA[<h1><?php echo $heading_title; ?></h1>]]></search>
-				<add position="after"><![CDATA[			
+        </operation>
+    </file>
+
+    <file path="catalog/view/theme/*/template/product/product.tpl">
+        <operation error="skip">
+            <search><![CDATA[<h1><?php echo $heading_title; ?></h1>]]></search>
+            <add position="after"><![CDATA[
 					<?php if ($custom_options) { ?>
           				<?php foreach ($custom_options as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
@@ -49,13 +49,13 @@
           				<?php } ?>
           			<?php } ?>
 				]]></add>
-			</operation>				
-		</file>
+        </operation>
+    </file>
 
-		<file path="catalog/view/theme/netstore/template/product/product.tpl">
-			<operation error="skip">
-				<search><![CDATA[<?php if ($price) { ?>]]></search>
-				<add position="before"><![CDATA[			
+    <file path="catalog/view/theme/revolution/template/product/product.tpl">
+        <operation error="skip">
+            <search><![CDATA[<?php if ($revtheme_product_all['short_desc'] && $short_description) { ?>]]></search>
+            <add position="before"><![CDATA[
 					<?php if ($custom_options) { ?>
           				<?php foreach ($custom_options as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
@@ -65,8 +65,10 @@
               					<a href="<?php echo $value['href']; ?>" class="<?php echo $value['class']; ?>">
                 				<?php if ($option['type'] == 1) { ?>
                 					<div class="color_block" style="background:<?php echo $value['value'] ?>"></div>
-                				<?php } else { ?>
+                				<?php } else if ($option['type'] == 2) { ?>
                 					<?php echo $value['value']; ?>
+                				<?php } else if ($option['type'] == 3) { ?>
+                					<div class="img_block"><img src="<?php echo $value['value']; ?>"></div>
                 				<?php } ?>
               					</a>
             					</div>
@@ -75,6 +77,34 @@
           				<?php } ?>
           			<?php } ?>
 				]]></add>
-			</operation>				
-		</file>
+        </operation>
+    </file>
+
+    <file path="catalog/view/theme/netstore/template/product/product.tpl">
+        <operation error="skip">
+            <search><![CDATA[<?php if ($price) { ?>]]></search>
+            <add position="before"><![CDATA[
+					<?php if ($custom_options) { ?>
+          				<?php foreach ($custom_options as $option) { ?>
+          					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
+          					<div class="custom_options">
+            				<?php foreach ($option['values'] as $value) { ?>
+            					<div class="custom_option">
+              					<a href="<?php echo $value['href']; ?>" class="<?php echo $value['class']; ?>">
+                				<?php if ($option['type'] == 1) { ?>
+                					<div class="color_block" style="background:<?php echo $value['value'] ?>"></div>
+                				<?php } else if ($option['type'] == 2) { ?>
+                					<?php echo $value['value']; ?>
+                				<?php } else if ($option['type'] == 3) { ?>
+                					<div class="img_block"><img src="<?php echo $value['value']; ?>"></div>
+                				<?php } ?>
+              					</a>
+            					</div>
+            				<?php } ?>
+          					</div>
+          				<?php } ?>
+          			<?php } ?>
+				]]></add>
+        </operation>
+    </file>
 </modification>
