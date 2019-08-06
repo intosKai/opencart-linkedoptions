@@ -106,7 +106,7 @@ class ModelCatalogCustomOption extends Model {
 		$sql .= "`product_id` int(11) NOT NULL, ";
 		$sql .= "`option_id` int(11) NOT NULL, ";
 		$sql .= "`sort` int(11) NOT NULL, ";
-		$sql .= "`value` varchar(32) NOT NULL, ";
+		$sql .= "`value` varchar(80) NOT NULL, ";
 		$sql .= "PRIMARY KEY (`id`) ";
 		$sql .= ") ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci; ";
 		$this->db->query($sql);
