@@ -37,8 +37,10 @@
               					<a href="<?php echo $value['href']; ?>" class="<?php echo $value['class']; ?>">
                 				<?php if ($option['type'] == 1) { ?>
                 					<div class="color_block" style="background:<?php echo $value['value'] ?>"></div>
-                				<?php } else { ?>
+                				<?php } else if ($option['type'] == 2) { ?>
                 					<?php echo $value['value']; ?>
+                				<?php } else if ($option['type'] == 3) { ?>
+                					<div class="img_block"><img src="<?php echo $value['value']; ?>"></div>
                 				<?php } ?>
               					</a>
             					</div>

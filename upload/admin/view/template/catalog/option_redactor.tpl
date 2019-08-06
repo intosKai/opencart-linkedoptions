@@ -54,6 +54,8 @@
                 <?php if ($custom_option['type'] == 1) echo 'selected'; ?> value="1">Цвет</option>
                 <option
                 <?php if ($custom_option['type'] == 2) echo 'selected'; ?> value="2">Текст</option>
+                <option
+                <?php if ($custom_option['type'] == 3) echo 'selected'; ?> value="3">Изображение</option>
               </select>
             </div>
           </div>
@@ -121,7 +123,7 @@
                 </td>
                 <td>
                   <input class="form-control" type="text" name="value_name" id="value_name"
-                         placeholder="#FFF или текст" required>
+                         placeholder="#FFF, ссылка или текст" required>
                 </td>
                 <td>
                   <input type="submit" class="btn btn-primary" value="Добавить">
