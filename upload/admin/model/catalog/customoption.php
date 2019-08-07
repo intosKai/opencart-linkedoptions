@@ -4,9 +4,10 @@ class ModelCatalogCustomOption extends Model {
 	public function editCustomOption($data = array()) {
 		if (isset($data['option_id'])) {
 			$this->db->query("DELETE FROM " . DB_PREFIX . "custom_option WHERE id=" . (int)$data['option_id']);
+			$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option SET id=" . (int)$data['option_id'] . ", product_id=" . (int)$data['product-id'] . ", type=" . (int)$data['select-type'] . ", sort=" . (int)$data['input-sort'] . ", name='" . $this->db->escape($data['input-name']) . "'");
+		} else {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option SET product_id=" . (int)$data['product-id'] . ", type=" . (int)$data['select-type'] . ", sort=" . (int)$data['input-sort'] . ", name='" . $this->db->escape($data['input-name']) . "'");
 		}
-
-		$this->db->query("INSERT INTO " . DB_PREFIX . "custom_option SET id=" . (int)$data['option_id'] . ", product_id=" . (int)$data['product-id'] . ", type=" . (int)$data['select-type'] . ", sort=" . (int)$data['input-sort'] . ", name='" . $this->db->escape($data['input-name']) . "'");
 	}
 
 	public function addValue($data = array()) {
