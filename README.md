@@ -3,7 +3,7 @@
 Модуль для создания неограниченного количества опций для любого товара OpenCart.
 При переключении опции происходит полная смена карточки товара. Это позволяет максимально улучшить SEO сайта.
 
-_Версия: 0.1.0-alpha_
+_Версия: 0.1.1-beta_
 ### Возможности
 
 * Копирование опций со значениями
@@ -28,7 +28,7 @@ _Version: 0.0.3-alpha_
 
 * Copy any options with values
 * Creating options for product
-* Two types of options (color and text)
+* Two types of options (color, text, images)
 * Sort options and values
 
 ### Compatible OpenCart versions
