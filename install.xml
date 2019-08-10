@@ -2,7 +2,7 @@
 <modification>
 	<name>Linked Options</name>
 	<code>Linked Options</code>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<link>https://github.com/intosKai/opencart-linkedoptions</link>
 	<author>Petr Ivanov (info@ioqu.pro)</author>
 		
@@ -12,14 +12,14 @@
 				<add position="before"><![CDATA[
 					$this->document->addStyle('catalog/view/theme/default/stylesheet/custom_option.css');
 					$this->load->model('catalog/customoptions');
-					$custom_options = $this->model_catalog_customoptions->getCustomOption($this->request->get['product_id']);
-            		foreach ($custom_options as &$option) {
+					$co_array = $this->model_catalog_customoptions->getCustomOption($this->request->get['product_id']);
+            		foreach ($co_array as &$option) {
                 		foreach ($option['values'] as &$value) {
                     		$value['href'] = $this->url->link('product/product', 'product_id=' . $value['product_id']);
                     		$value['class'] = ($this->request->get['product_id'] == $value['product_id']) ? 'active' : '';
                 		}
             		}
-            		$data['custom_options'] = $custom_options;
+            		$data['co_array'] = $co_array;
 				]]></add>
 			</operation>				
 		</file>	
@@ -28,8 +28,8 @@
 			<operation error="skip">
 				<search><![CDATA[<h1><?php echo $heading_title; ?></h1>]]></search>
 				<add position="after"><![CDATA[			
-					<?php if ($custom_options) { ?>
-          				<?php foreach ($custom_options as $option) { ?>
+					<?php if (isset($co_array)) { ?>
+          				<?php foreach ($co_array as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
           					<div class="custom_options">
             				<?php foreach ($option['values'] as $value) { ?>
@@ -54,10 +54,10 @@
 			<operation error="skip">
 				<search><![CDATA[<?php if ($price) { ?>]]></search>
 				<add position="before"><![CDATA[			
-					<?php if ($custom_options) { ?>
-          				<?php foreach ($custom_options as $option) { ?>
+					<?php if (isset($co_array)) { ?>
+          				<?php foreach ($co_array as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
-          					<div class="custom_options">
+          					<div class="co_array">
             				<?php foreach ($option['values'] as $value) { ?>
             					<div class="custom_option">
               					<a href="<?php echo $value['href']; ?>" class="<?php echo $value['class']; ?>">
