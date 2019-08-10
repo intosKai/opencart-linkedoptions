@@ -31,7 +31,7 @@
         <operation error="skip">
             <search><![CDATA[<h1><?php echo $heading_title; ?></h1>]]></search>
             <add position="after"><![CDATA[
-					<?php if ($co_array) { ?>
+					<?php if (isset($co_array)) { ?>
           				<?php foreach ($co_array as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
           					<div class="custom_options">
@@ -87,7 +87,7 @@
         <operation error="skip">
             <search><![CDATA[<?php if ($price) { ?>]]></search>
             <add position="before"><![CDATA[
-					<?php if ($co_array) { ?>
+					<?php if (isset($co_array)) { ?>
           				<?php foreach ($co_array as $option) { ?>
           					<h2 class="custom_option_header"><?php echo $option['name']?></h2>
           					<div class="custom_options">
